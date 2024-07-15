@@ -11,9 +11,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.ui.Model;
 import java.util.List;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.RequestMethod;
+
 
 @Controller
 @RequiredArgsConstructor
+// @RequestMapping("/notes")
 public class NoteController {
     private final NotesService notesService;
 
@@ -31,7 +35,6 @@ public class NoteController {
         model.addAttribute("note", new Note());
         return "notesList";
     }
-
 
     @GetMapping("/archive")
     public String getArchive(@RequestParam(name = "title", required = false) String title,
